@@ -1,6 +1,10 @@
 from django.urls import path
-from .views import IndexView
+from . import views
+
+app_name = "blog"
 
 urlpatterns = [
-    path("", IndexView.as_view(), name="index"),
+    path("", views.PostListView.as_view(), name="post_list"),
+    path("<int:pk>/", views.PostDetailView.as_view(), name="post_detail"),
+    # Add other URL patterns here
 ]
